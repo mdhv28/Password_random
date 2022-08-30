@@ -1,8 +1,32 @@
-def replace_word():
-    str = "hi guys, i am tomi, and hi hi hi hi"
-    word_to_replace = input("Enter the word to replace: ")
-    word_replacement = input("Enter the word replacement: ")
-    print(str.replace(word_to_replace, word_replacement))
+import string
+import random
+
+characters = list(string.ascii_letters + string.digits + " !@#$%^&*()")
 
 
-replace_word()
+def generate_password():
+    password_length = int(input("How long would you like your password to be? "))
+
+    random.shuffle(characters)
+
+    password = []
+
+    for x in range(password_length):
+        password.append(random.choice(characters))
+
+    random.shuffle(password)
+
+    password = "".join(password)
+    print(password)
+
+
+option = input("Do you want to generate a password? (Yes/No): ")
+
+if option == "Yes":
+    generate_password()
+elif option == "No":
+    print("Program ended")
+    quit()
+else:
+    print("Invalid input, please input Yes or No")
+    quit()
